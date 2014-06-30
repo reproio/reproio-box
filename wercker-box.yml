@@ -9,7 +9,41 @@ keywords:
   - ffmpeg
   - imagemagick
 script: |
-  sudo add-apt-repository ppa:mc3man/trusty-media
   sudo apt-get update
-  sudo apt-get install ffmpeg
   sudo apt-get install imagemagick
+  sudo apt-get -y install autoconf automake build-essential git libass-dev libgpac-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libx11-dev libxext-dev libxfixes-dev pkg-config texi2html zlib1g-dev
+  wget http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz
+  tar xzvf yasm-1.2.0.tar.gz
+  cd yasm-1.2.0
+  ./configure
+  make
+  sudo make install
+  git clone --depth 1 git://git.videolan.org/x264.git
+  cd x264
+  ./configure --enable-static
+  make
+  sudo make install
+  git clone --depth 1 git://github.com/mstorsjo/fdk-aac.git
+  cd fdk-aac
+  autoreconf -fivv
+  ./configure --disable-shared
+  make
+  sudo make install
+  sudo apt-get install libmp3lame-dev
+  wget http://downloads.xiph.org/releases/opus/opus-1.0.3.tar.gz
+  tar xzvf opus-1.0.3.tar.gz
+  cd opus-1.0.3
+  ./configure --disable-shared
+  make
+  sudo make install
+  git clone --depth 1 http://git.chromium.org/webm/libvpx.git
+  cd libvpx
+  ./configure --disable-examples
+  make
+  sudo make install
+  git clone --depth 1 git://source.ffmpeg.org/ffmpeg
+  cd ffmpeg
+  ./configure --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-nonfree
+  make
+  sudo make install
+
