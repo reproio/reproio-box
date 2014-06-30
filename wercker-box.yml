@@ -1,5 +1,5 @@
-name: reproio-rvm
-version: 0.0.1
+name: reproio-box
+version: 0.0.2
 inherits: wercker/rvm@2.0.1
 type: main
 platform: ubuntu@12.04
@@ -8,6 +8,7 @@ keywords:
   - rvm
   - ffmpeg
   - imagemagick
+  - phantomjs
 script: |
   sudo apt-get update
   sudo apt-get install imagemagick
@@ -47,3 +48,7 @@ script: |
   make
   sudo make install
 
+  cd /tmp
+  wget https://phantomjs.googlecode.com/files/phantomjs-1.9.1-linux-x86_64.tar.bz2
+  tar xfj phantomjs-1.9.1-linux-x86_64.tar.bz2
+  sudo cp /tmp/phantomjs-1.9.1-linux-x86_64/bin/phantomjs /usr/local/bin
