@@ -1,4 +1,4 @@
-name: reproio box
+name: reproio-rvm
 version: 0.0.1
 inherits: wercker/rvm@2.0.1
 type: main
