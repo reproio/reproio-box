@@ -36,7 +36,7 @@ script: |
   ./configure --disable-shared
   make
   sudo make install
-  git clone --depth 1 http://git.chromium.org/webm/libvpx.git
+  git clone --depth 1 https://chromium.googlesource.com/webm/libvpx.git
   cd libvpx
   ./configure --disable-examples
   make
