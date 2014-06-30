@@ -1,0 +1,15 @@
+name: reproio box
+version: 0.0.1
+inherits: wercker/rvm@2.0.1
+type: main
+platform: ubuntu@12.04
+keywords:
+  - ruby
+  - rvm
+  - ffmpeg
+  - imagemagick
+script: |
+  sudo add-apt-repository ppa:mc3man/trusty-media
+  sudo apt-get update
+  sudo apt-get install ffmpeg
+  sudo apt-get install imagemagick
