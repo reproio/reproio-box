@@ -1,6 +1,6 @@
 name: reproio-box
 version: 0.0.4
-inherits: wercker/rvm@2.0.1
+inherits: wercker/rvm@2.2.0
 type: main
 platform: ubuntu@12.04
 keywords:
