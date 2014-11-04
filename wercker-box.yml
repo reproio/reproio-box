@@ -13,6 +13,8 @@ keywords:
   - imagemagick
   - phantomjs
 script: |
+  gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+
   # ruby
   sudo apt-get update -y
   sudo apt-get install git zlib1g-dev libreadline-dev libqtwebkit-dev curl -y
