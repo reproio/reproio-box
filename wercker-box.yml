@@ -1,16 +1,33 @@
 name: reproio-box
 version: 0.0.5
-inherits: wercker/rvm@2.2.0
+inherits: wercker/default@0.0.2
 type: main
 platform: ubuntu@12.04
 keywords:
-  - nodejs
-  - ruby
   - rvm
+  - ruby@2.1.2
+  - ruby@2.1.3
+  - ruby@2.1.4
+  - nodejs
   - ffmpeg
   - imagemagick
   - phantomjs
 script: |
+  # ruby
+  sudo apt-get update -y
+  sudo apt-get install git zlib1g-dev libreadline-dev libqtwebkit-dev curl -y
+  sudo apt-get remove ruby1.9.1
+  curl -sSL https://get.rvm.io | bash -s stable
+  echo "bundler -v~>1.5.1" > $HOME/.rvm/gemsets/global.gems
+  source $HOME/.rvm/scripts/rvm
+  rvm install 2.1.2
+  rvm install 2.1.3
+  rvm install 2.1.4
+  rvm --default use 2.1.4
+  echo "gem: --no-rdoc --no-ri" >> $HOME/.gemrc
+  echo "RAILS_ENV=test" | sudo tee -a /etc/environment
+  echo "RACK_ENV=test" | sudo tee -a /etc/environment
+
   # nodejs
   export NODEVERSION=0.10.29
   sudo apt-get update
