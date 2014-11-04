@@ -1,5 +1,5 @@
 name: reproio-box
-version: 0.0.5
+version: 0.0.6
 inherits: wercker/default@0.0.2
 type: main
 platform: ubuntu@12.04
