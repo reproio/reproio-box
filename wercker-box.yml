@@ -31,7 +31,7 @@ script: |
   echo "RACK_ENV=test" | sudo tee -a /etc/environment
 
   # nodejs
-  export NODEVERSION=0.10.29
+  export NODEVERSION=0.10.33
   sudo apt-get update
   sudo apt-get install wget build-essential
   cd $HOME
