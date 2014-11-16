@@ -1,5 +1,5 @@
 name: reproio-box
-version: 0.0.6
+version: 0.0.7
 inherits: wercker/default@0.0.2
 type: main
 platform: ubuntu@12.04
@@ -8,6 +8,7 @@ keywords:
   - ruby@2.1.2
   - ruby@2.1.3
   - ruby@2.1.4
+  - ruby@2.1.5
   - nodejs
   - ffmpeg
   - imagemagick
@@ -25,7 +26,8 @@ script: |
   rvm install 2.1.2
   rvm install 2.1.3
   rvm install 2.1.4
-  rvm --default use 2.1.4
+  rvm install 2.1.5
+  rvm --default use 2.1.5
   echo "gem: --no-rdoc --no-ri" >> $HOME/.gemrc
   echo "RAILS_ENV=test" | sudo tee -a /etc/environment
   echo "RACK_ENV=test" | sudo tee -a /etc/environment
